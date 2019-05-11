@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A8D7F04-C19A-4D7B-BD25-7365D53B2C8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FuxExMachinaLibrary</RootNamespace>
+    <AssemblyName>FuxExMachinaLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atrea.Extensions">
+      <HintPath>..\..\dotnet\Atrea.Extensions\Atrea.Extensions\bin\Release\Atrea.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Atrea.Utilities">
+      <HintPath>..\..\dotnet\Atrea.Utilities\Atrea.Utilities\bin\Release\Atrea.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Costura, Version=3.3.3.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.3.3.3\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compose\Composer.cs" />
+    <Compile Include="Compose\ComposerPopulation.cs" />
+    <Compile Include="Compose\Composition.cs" />
+    <Compile Include="Compose\CompositionContext.cs" />
+    <Compile Include="Compose\CompositionContextCollection.cs" />
+    <Compile Include="Compose\Notes\NoteChoiceCollection.cs" />
+    <Compile Include="Compose\Notes\NoteChoiceWeight.cs" />
+    <Compile Include="Compose\Notes\NoteChoiceWeightNoteChoice.cs" />
+    <Compile Include="Compose\Notes\NotePair.cs" />
+    <Compile Include="Decorators\AppogiaturaDecorator.cs" />
+    <Compile Include="Decorators\BaseCompositionDecorator.cs" />
+    <Compile Include="Decorators\CompositionDecorator.cs" />
+    <Compile Include="Decorators\ICompositionDecorator.cs" />
+    <Compile Include="Decorators\PassingToneDecorator.cs" />
+    <Compile Include="Decorators\MordentDecorator.cs" />
+    <Compile Include="Enums\CompositionRuleEvaluator.cs" />
+    <Compile Include="Enums\NoteMotion.cs" />
+    <Compile Include="Enums\NoteMotionSpan.cs" />
+    <Compile Include="Enums\ScaleDegree.cs" />
+    <Compile Include="Evaluators\CompositionEvaluator.cs" />
+    <Compile Include="Compose\CompositionStrategy.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\AggregateRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\AscendingSeventhRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\DissonantLeapRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\DoubledLeapRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\DoubledNoteRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\ICompositionRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\LeapReturnRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\MultipleLeapRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\ParallelPerfectsRuleEvaluator.cs" />
+    <Compile Include="Evaluators\RuleEvaluators\DissonanceRuleEvaluator.cs" />
+    <Compile Include="Compose\Notes\NoteChoice.cs" />
+    <Compile Include="Compose\Notes\NoteChoiceWeightGenerator.cs" />
+    <Compile Include="Factories\FuxExMachinaFactory.cs" />
+    <Compile Include="Factories\RuleEvaluatorFactory.cs" />
+    <Compile Include="Evaluators\ScaleDegreeEvaluator.cs" />
+    <Compile Include="Loggers\FuxExMachinaConsoleLogger.cs" />
+    <Compile Include="Loggers\FuxExMachinaNullLogger.cs" />
+    <Compile Include="Loggers\IFuxExMachinaLogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.4.0.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.4.0.2\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props'))" />
+  </Target>
+  <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
+</Project>
